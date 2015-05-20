@@ -1,0 +1,25 @@
+* [33m512eb03[m[33m ([1;36mHEAD[m[33m, [1;32mmaster[m[33m)[m master側
+[31m|[m M	myfile.txt
+* [33mda4a74e[m merge --squash わかるかな？
+[31m|[m M	myfile.txt
+*   [33m41944d4[m[33m ([1;31morigin/master[m[33m, [1;31morigin/HEAD[m[33m)[m これがマージコミットです。 origin/master を マスターに取り込みました。 Merge remote-tracking branch 'origin/master'
+[32m|[m[33m\[m  
+[32m|[m * [33mccf171a[m merge --squash の実験
+[32m|[m [33m|[m M	myfile.txt
+[32m|[m * [33m75eedb4[m rebase, merge 説明追加
+[32m|[m [33m|[m M	rebase.txt
+* [33m|[m [33mb3e6e36[m コンフリクト2
+[33m|[m [33m|[m M	myfile.txt
+* [33m|[m [33mb172ce6[m コンフリクト
+[33m|[m[33m/[m  
+[33m|[m   M	myfile.txt
+* [33m2189986[m make conflict
+[33m|[m M	rebase.txt
+* [33m5d1e213[m rebase説明追加
+[33m|[m M	rebase.txt
+* [33m616cbf8[m a1
+[33m|[m M	master.txt
+* [33m1f89b35[m Revertします⇒ "revert予定"
+[33m|[m M	master.txt
+* [33ma2fba7a[m revert予定
+[33m|[m M	master.txt
