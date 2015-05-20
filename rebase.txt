@@ -14,7 +14,9 @@ rebaseのタブー
 
 pull --rebase
 
-普通のpullは、fetch + merge だが、--rebase をつけると、
-fetch + rebase となる。
+普通のpullは fetch + merge だが、
+--rebase をつけると fetch + rebase となる。
 ※rebaseすることで、マージコミットが残らない。履歴が一本になるといったメリットがある。
+  Subversionと同じ振る舞い。
+※rebaseではなく、mergeの場合は「履歴が一時的に2本に分かれて、それがマージされた」という履歴が残る。
 ※常に、pull --rebase でいいのでは？
