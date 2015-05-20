@@ -16,4 +16,5 @@ pull --rebase
 
 普通のpullは、fetch + merge だが、--rebase をつけると、
 fetch + rebase となる。
+※rebaseすることで、マージコミットが残らない。履歴が一本になるといったメリットがある。
 ※常に、pull --rebase でいいのでは？
