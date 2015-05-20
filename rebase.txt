@@ -10,3 +10,10 @@ rebaseの使い方
 rebaseのタブー
 
 「パブリックリポジトリにプッシュしたコミットをrebaseしてはならない」
+
+
+pull --rebase
+
+普通のpullは、fetch + merge だが、--rebase をつけると、
+fetch + rebase となる。
+※常に、pull --rebase でいいのでは？
