@@ -45,5 +45,23 @@ feature f2を作る。
 f1でもう一つコミットする。
 f1でrebaseする。
 
-f1でもう一つコミットする。(ここ）
+f1でもう一つコミットする。
+f1でrebaseしてみた。⇒何も起きなかった（up-to-dateと言われた）
+f1でgit flow feature pull originしてみた⇒conflictが発生した
+
+vagrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git lg
+*   74abc64 2015-05-21 Leo RDB  (HEAD, feature/f1) f1で git flow feature pull origin してみた。 feature.txtでconflic
+|\
+| * 773f117 2015-05-21 Leo RDB  (origin/feature/f1) f1 1回目
+* | 28670f2 2015-05-21 Leo RDB  f1（3回目）
+* | c1a6d1d 2015-05-21 Leo RDB  f1（2回目）
+* | 9dadda1 2015-05-21 Leo RDB  f1 1回目
+* | 47b3b87 2015-05-21 Leo RDB  (develop) f2 1回目
+|/
+*   662d9fe 2015-05-21 Leo RDB  test2からdevelopへのmergeコミット。
+
+f1 1回目 が2箇所に出てきた！
+
+f1をrebaseする。⇒conflictが発生したので修正する（いまここ）
+
 f1をfinishする。
