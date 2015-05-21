@@ -1,5 +1,30 @@
 feature を finish するときは必ずコミットが1つにまとめられるのか？
 2回目のコミット。
 
-⇒それは違うようだ。(feature/test3)
+結論：
 
+まとめられなかった。（featureブランチは削除された。）
+こんどはrebaseしてみる
+
+
+test3がfinishしたあとで、test2をrebaseしてみた。
+このファイルでconflictが発生したので、いま解消中。
+
+
+
+
+実験2:
+featureを作る。
+2回コミットする。
+feature rebaseする。 ★ここで何も起こらなかった。実験中止。
+feature finishする。
+
+
+実験3:
+featureを作る。
+2回コミットする。
+
+別のfeatureを作って、finishする。（これによりdevelopブランチを先に進める）
+
+もとのfeatureでrebaseする。
+もとのfeatureでfinishする。
