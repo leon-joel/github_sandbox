@@ -1,5 +1,12 @@
 feature を finish するときは必ずコミットが1つにまとめられるのか？
 2回目のコミット。
 
-⇒それは違うようだ。(feature/test3)
+結論：
 
+まとめられなかった。（featureブランチは削除された。）
+こんどはrebaseしてみる
+
+
+test3がfinishしたあとで、test2をrebaseしてみた。
+
+このファイルでconflictが発生したので、いま解消中。
