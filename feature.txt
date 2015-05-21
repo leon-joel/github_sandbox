@@ -8,5 +8,13 @@ feature を finish するときは必ずコミットが1つにまとめられる
 
 
 test3がfinishしたあとで、test2をrebaseしてみた。
-
 このファイルでconflictが発生したので、いま解消中。
+
+
+
+
+実験2:
+featureを作る。
+2回コミットする。
+feature rebaseする。
+feature finishする。
