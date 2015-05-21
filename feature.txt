@@ -109,3 +109,44 @@ vagrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git br
 
 
 f1をfinishする。
+
+origin側のf1ブランチには1回目のコミットだけが残っている。
+（それ以降はpushしなかったからか）
+
+vagrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git lg
+* 773f117 2015-05-21 Leo RDB  (HEAD, origin/feature/f1, feature/f1) f1 1回目
+*   662d9fe 2015-05-21 Leo RDB  test2からdevelopへのmergeコミット。
+
+
+developブランチには、ちゃんと全てのコミットが残っていた。
+f1の全コミットがf2の後ろに並んでいるのはrebaseしたから。
+
+vagrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git co develop
+Switched to branch 'develop'
+vagrant@rails-dev-box:/vagrant/github_sandbox(develop)$ git lg
+*   e9dcad9 2015-05-21 Leo RDB  (HEAD, develop) f1のfinish。 マージコミット。
+|\
+| * 0a52ca4 2015-05-21 Leo RDB  f1（5回目）
+| * 8fef8d0 2015-05-21 Leo RDB  f1（4回目）
+| * 532d78d 2015-05-21 Leo RDB  f1（3回目）
+| * c282d03 2015-05-21 Leo RDB  f1（2回目）
+| * 9dc8aaf 2015-05-21 Leo RDB  f1 1回目
+|/
+* 47b3b87 2015-05-21 Leo RDB  f2 1回目
+*   662d9fe 2015-05-21 Leo RDB  test2からdevelopへのmergeコミット。
+
+おまけ、branchの状態。
+
+vagrant@rails-dev-box:/vagrant/github_sandbox(develop)$ git br
+* develop                            e9dcad9 f1のfinish。 マージコミット。
+  feature/delete_user                1d846a8 [origin/feature/delete_user] merged
+  feature/f1                         773f117 [origin/feature/f1] f1 1回目
+  master                             f36927b [origin/master: ahead 5] git flow hotfix finish v1.0.1 で、hotfixブランチからmasterへのマージコミット。
+  remotes/origin/HEAD                -> origin/master
+  remotes/origin/develop             1042cc5 remove gomi file
+  remotes/origin/feature/delete_user 1d846a8 merged
+  remotes/origin/feature/f1          773f117 f1 1回目
+  remotes/origin/master              1042cc5 remove gomi file
+
+
+
