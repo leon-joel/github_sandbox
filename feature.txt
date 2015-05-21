@@ -16,5 +16,15 @@ test3がfinishしたあとで、test2をrebaseしてみた。
 実験2:
 featureを作る。
 2回コミットする。
-feature rebaseする。
+feature rebaseする。 ★ここで何も起こらなかった。実験中止。
 feature finishする。
+
+
+実験3:
+featureを作る。
+2回コミットする。
+
+別のfeatureを作って、finishする。（これによりdevelopブランチを先に進める）
+
+もとのfeatureでrebaseする。
+もとのfeatureでfinishする。
