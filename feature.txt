@@ -26,5 +26,24 @@ featureを作る。
 
 別のfeatureを作って、finishする。（これによりdevelopブランチを先に進める）
 
-もとのfeatureでrebaseする。
+もとのfeatureでrebaseする。⇒別のfeatureが取り込まれて一本に並んだ。
 もとのfeatureでfinishする。
+★まとめられなかった。
+
+※git flow feature publish するかどうかが、まとまるかどうかの分岐点のような気がする。
+publishする ⇒ develop上には1つしかコミットが残らない。その代わりpublishしたブランチは削除されないので、そちらに履歴が残る。
+
+
+実験4:
+feature f1 を作る。
+1つコミットする。
+publishする。
+
+feature f2を作る。
+1つコミットして、f2をfinishする。
+
+f1でもう一つコミットする。
+f1でrebaseする。
+
+f1でもう一つコミットする。
+f1をfinishする。
