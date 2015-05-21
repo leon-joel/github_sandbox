@@ -1,0 +1,77 @@
+* git flow feature rebase
+
+かなりまえの releaseブランチ、hotfixブランチ からのマージコミットもなくなって、
+キレイな一本線になった。
+
+でも、develogにpush（マージ）するときに問題になると思う。
+hotfixやreleaseでのcommitがdevelogには残ってて、
+こちらでは同じcommitが新たに作り直されてるわけだから。。。
+
+
+rebase前
+
+vagrant@rails-dev-box:/vagrant/github_sandbox_owner/delete_user(feature/delete_user)$ git lg
+*   0aa28a6 2015-05-21 Leo RDB  (HEAD, feature/delete_user) fixed conflict
+|\
+| * 1769abf 2015-05-21 Leo RDB  (origin/feature/delete_user) add2
+* | d0acfc9 2015-05-21 Leo RDB  changed by owner
+|/
+* 5d304f6 2015-05-21 Leo RDB  add in progress
+* 509f4d2 2015-05-21 Leo RDB  delete user in progress
+*   9a5ddee 2015-05-21 Leo RDB  git flow hotfix finish v1.0.1 で、hotfixブランチからmasterにマージ＆タグ張りされた後
+|\
+| *   f36927b 2015-05-21 Leo RDB  git flow hotfix finish v1.0.1 で、hotfixブランチからmasterへのマージコミット。
+| |\
+| | * 071d5b0 2015-05-21 Leo RDB  hotfix v1.0.1
+| |/
+* |   caa1e16 2015-05-21 Leo RDB  git flow release finish v1.0 すると、 releaseブランチからmasterにマージ＆タグ張り
+|\ \
+| |/
+| *   d48173b 2015-05-21 Leo RDB  releaseブランチを master にマージ（fit flow release finish v1.0）
+| |\
+| | * 90fa8f7 2015-05-21 Leo RDB  Last-minute fix for release v1.0
+| |/
+|/|
+* | d8b6d92 2015-05-21 Leo RDB  add create_user
+|/
+
+vagrant@rails-dev-box:/vagrant/github_sandbox_owner(feature/delete_user)$ git lg
+* 0123ec2 2015-05-21 Leo RDB  (HEAD, feature/delete_user) changed by owner
+* d7f61f1 2015-05-21 Leo RDB  add2
+* e210a31 2015-05-21 Leo RDB  add in progress
+* 3f536b1 2015-05-21 Leo RDB  delete user in progress
+* 3fcd97a 2015-05-21 Leo RDB  hotfix v1.0.1
+* cf27d9f 2015-05-21 Leo RDB  Last-minute fix for release v1.0
+* 02634b3 2015-05-21 Leo RDB  add create_user
+* 1042cc5 2015-05-20 Leo RDB  (origin/master, origin/develop, origin/HEAD, master, develop) remove gomi file
+*   f887efc 2015-05-20 Leo RDB  さっきのマージコミットは上手くいってなかったのか？？？ コンフリクトが解消していなか
+|\
+| * 3c70328 2015-05-20 Leo RDB  branch側2
+| * fddb54e 2015-05-20 Leo RDB  branch側
+| * 39f34e0 2015-05-20 Leo RDB  わかるかな
+
+
+agrant@rails-dev-box:/vagrant/github_sandbox(develop)$ git lg
+*   9a5ddee 2015-05-21 Leo RDB  (HEAD, develop) git flow hotfix finish v1.0.1 で、hotfixブランチからmasterにマージ＆
+|\
+| *   f36927b 2015-05-21 Leo RDB  (tag: v1.0.1, master) git flow hotfix finish v1.0.1 で、hotfixブランチからmasterへ
+| |\
+| | * 071d5b0 2015-05-21 Leo RDB  hotfix v1.0.1
+| |/
+* |   caa1e16 2015-05-21 Leo RDB  git flow release finish v1.0 すると、 releaseブランチからmasterにマージ＆タグ張り
+|\ \
+| |/
+| *   d48173b 2015-05-21 Leo RDB  (tag: v1.0) releaseブランチを master にマージ（fit flow release finish v1.0）
+| |\
+| | * 90fa8f7 2015-05-21 Leo RDB  Last-minute fix for release v1.0
+| |/
+|/|
+* | d8b6d92 2015-05-21 Leo RDB  add create_user
+|/
+* 1042cc5 2015-05-20 Leo RDB  (origin/master, origin/develop, origin/HEAD) remove gomi file
+*   f887efc 2015-05-20 Leo RDB  さっきのマージコミットは上手くいってなかったのか？？？ コンフリクトが解消していなか
+|\
+| * 3c70328 2015-05-20 Leo RDB  branch側2
+| * fddb54e 2015-05-20 Leo RDB  branch側
+| * 39f34e0 2015-05-20 Leo RDB  わかるかな
+
