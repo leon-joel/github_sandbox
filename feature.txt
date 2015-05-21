@@ -26,5 +26,86 @@ featureを作る。
 
 別のfeatureを作って、finishする。（これによりdevelopブランチを先に進める）
 
-もとのfeatureでrebaseする。
+もとのfeatureでrebaseする。⇒別のfeatureが取り込まれて一本に並んだ。
 もとのfeatureでfinishする。
+★まとめられなかった。
+
+※git flow feature publish するかどうかが、まとまるかどうかの分岐点のような気がする。
+publishする ⇒ develop上には1つしかコミットが残らない。その代わりpublishしたブランチは削除されないので、そちらに履歴が残る。
+
+
+実験4:
+feature f1 を作る。
+1つコミットする。
+publishする。
+
+feature f2を作る。
+1つコミットして、f2をfinishする。
+
+f1でもう一つコミットする。
+f1でrebaseする。
+
+f1でもう一つコミットする。
+f1でrebaseしてみた。⇒何も起きなかった（up-to-dateと言われた）
+f1でgit flow feature pull originしてみた⇒conflictが発生した
+
+vagrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git lg
+*   74abc64 2015-05-21 Leo RDB  (HEAD, feature/f1) f1で git flow feature pull origin してみた。 feature.txtでconflic
+|\
+| * 773f117 2015-05-21 Leo RDB  (origin/feature/f1) f1 1回目
+* | 28670f2 2015-05-21 Leo RDB  f1（3回目）
+* | c1a6d1d 2015-05-21 Leo RDB  f1（2回目）
+* | 9dadda1 2015-05-21 Leo RDB  f1 1回目
+* | 47b3b87 2015-05-21 Leo RDB  (develop) f2 1回目
+|/
+*   662d9fe 2015-05-21 Leo RDB  test2からdevelopへのmergeコミット。
+
+f1 1回目 が2箇所に出てきた！
+
+f1をrebaseする。⇒conflictが発生したので修正して、rebase --continue で完了
+
+
+agrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git lg
+* 8fef8d0 2015-05-21 Leo RDB  (HEAD, feature/f1) f1（4回目）
+* 532d78d 2015-05-21 Leo RDB  f1（3回目）
+* c282d03 2015-05-21 Leo RDB  f1（2回目）
+* 9dc8aaf 2015-05-21 Leo RDB  f1 1回目
+* 47b3b87 2015-05-21 Leo RDB  (develop) f2 1回目
+*   662d9fe 2015-05-21 Leo RDB  test2からdevelopへのmergeコミット。
+|\
+| * 1148c31 2015-05-21 Leo RDB  add3
+| * 0d4b570 2015-05-21 Leo RDB  2回目
+| * 25bce2e 2015-05-21 Leo RDB  こんどはrebaseしてみる
+|/
+* f6ae304 2015-05-21 Leo RDB  feature/test3 の追加
+*   7d19407 2015-05-21 Leo RDB  feasureからdevelogへのマージコミット。
+
+f1 1回目 が消えた。（というか, origin/feature/f1 とは別のラインに載ったから見えなくなっただけかな？）
+
+git pushしてみると、拒否られた。
+
+vagrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git push
+To git@github.com:leon-joel/github_sandbox.git
+ ! [rejected]        feature/f1 -> feature/f1 (non-fast-forward)
+error: failed to push some refs to 'git@github.com:leon-joel/github_sandbox.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+vagrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git fetch
+vagrant@rails-dev-box:/vagrant/github_sandbox(feature/f1)$ git br
+  develop                            47b3b87 f2 1回目
+  feature/delete_user                1d846a8 [origin/feature/delete_user] merged
+* feature/f1                         8fef8d0 [origin/feature/f1: ahead 5, behind 1] f1（4回目）
+  master                             f36927b [origin/master: ahead 5] git flow hotfix finish v1.0.1 で、hotfixブランチからmasterへのマージコミット。
+  remotes/origin/HEAD                -> origin/master
+  remotes/origin/develop             1042cc5 remove gomi file
+  remotes/origin/feature/delete_user 1d846a8 merged
+  remotes/origin/feature/f1          773f117 f1 1回目
+  remotes/origin/master              1042cc5 remove gomi file
+
+確かに、origin/feature/f1 とは違う線に乗っている。（rebaseしたからかな）
+
+
+
+f1をfinishする。
